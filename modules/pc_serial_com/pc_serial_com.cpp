@@ -59,6 +59,7 @@ static void commandShowCurrentTemperatureInFahrenheit();
 static void commandSetDateAndTime();
 static void commandShowDateAndTime();
 static void commandShowStoredEvents();
+static void commandRevealPasscode();
 
 //=====[Implementations of public functions]===================================
 
@@ -166,6 +167,7 @@ static void pcSerialComCommandUpdate( char receivedChar )
         case 's': case 'S': commandSetDateAndTime(); break;
         case 't': case 'T': commandShowDateAndTime(); break;
         case 'e': case 'E': commandShowStoredEvents(); break;
+        case 'p': case 'P': commandRevealPasscode(); break;
         default: availableCommands(); break;
     } 
 }
@@ -183,6 +185,7 @@ static void availableCommands()
     pcSerialComStringWrite( "Press 's' or 'S' to set the date and time\r\n" );
     pcSerialComStringWrite( "Press 't' or 'T' to get the date and time\r\n" );
     pcSerialComStringWrite( "Press 'e' or 'E' to get the stored events\r\n" );
+    pcSerialComStringWrite( "Press 'p' or 'P' to review the gated entry passcode events\r\n" );
     pcSerialComStringWrite( "\r\n" );
 }
 
@@ -307,4 +310,10 @@ static void commandShowStoredEvents()
         pcSerialComStringWrite( str );   
         pcSerialComStringWrite( "\r\n" );                    
     }
+}
+
+static void commandRevealPasscode(){
+    pcSerialComStringWrite( "This is the current gated Entry Passcode:  " );
+    pcSerialComStringWrite(currentCodeSequence());
+    pcSerialComStringWrite( "\r\n" );
 }
