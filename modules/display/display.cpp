@@ -80,6 +80,7 @@ DigitalOut displayEn( D9 );
 static void displayPinWrite( uint8_t pinName, int value );
 static void displayDataBusWrite( uint8_t dataByte );
 static void displayCodeWrite( bool type, uint8_t dataBus );
+void clearScreen();
 
 //=====[Implementations of public functions]===================================
 
@@ -223,4 +224,8 @@ static void displayDataBusWrite( uint8_t dataBus )
     delay( 1 );
     displayPinWrite( DISPLAY_PIN_EN, OFF );  
     delay( 1 );                   
+}
+
+void clearScreen(){
+    displayCodeWrite(DISPLAY_RS_INSTRUCTION, DISPLAY_IR_CLEAR_DISPLAY);
 }
