@@ -171,7 +171,7 @@ static void userInterfaceMatrixKeypadUpdate()
                 }
                 clearScreen();
                 displayCharPositionWrite(0, 0);
-                displayStringWrite("Enter Code:");
+                displayStringWrite("Input Code:");
                 displayCharPositionWrite(0, 1);
                 displayStringWrite("nTries:");
                 
@@ -190,7 +190,7 @@ static void userInterfaceMatrixKeypadUpdate()
                     displayStringWrite(empty);
 
                 displayCharPositionWrite(0, 0);
-                displayStringWrite("Enter Code:");
+                displayStringWrite("Input Code:");
                 displayCharPositionWrite(0, 1);
                 displayStringWrite("triesLeft:");
                
@@ -247,10 +247,10 @@ static void userInterfaceDisplayInit()
     displayInit();
      
     displayCharPositionWrite ( 0,0 );
-    displayStringWrite( "Enter code:" );
+    displayStringWrite( "Input code:" );
 
     displayCharPositionWrite ( 0,1 );
-    displayStringWrite( "Num Tries:" );
+    displayStringWrite( "# Tries:" );
     
  }
 
