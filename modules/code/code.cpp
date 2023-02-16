@@ -11,6 +11,8 @@
 #include "temperature_sensor.h"
 #include "gas_sensor.h"
 #include "matrix_keypad.h"
+#include "servo_motor.h"
+#include "display.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -32,6 +34,7 @@ static char codeSequence[CODE_NUMBER_OF_KEYS] = { '1', '8', '0', '5' };
 
 static bool codeMatch( char* codeToCompare );
 static void codeDeactivate();
+char * currentCodeSequence();
 
 //=====[Implementations of public functions]===================================
 
@@ -53,6 +56,7 @@ bool codeMatchFrom( codeOrigin_t codeOrigin )
                 userInterfaceCodeCompleteWrite(false);
                 if ( codeIsCorrect ) {
                     codeDeactivate();
+                   
                 } else {
                     incorrectCodeStateWrite(ON);
                     numberOfIncorrectCodes++;
@@ -105,4 +109,9 @@ static void codeDeactivate()
     systemBlockedStateWrite(OFF);
     incorrectCodeStateWrite(OFF);
     numberOfIncorrectCodes = 0;
+    
+
+}// returns the current code sequence
+char* currentCodeSequence(){
+    return codeSequence;
 }
