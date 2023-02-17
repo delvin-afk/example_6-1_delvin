@@ -314,6 +314,6 @@ static void commandShowStoredEvents()
 
 static void commandRevealPasscode(){
     pcSerialComStringWrite( "This is the current gated Entry Passcode:  " );
-    pcSerialComStringWrite(currentCodeSequence());
+    pcSerialComStringWrite("1 8 0 5");
     pcSerialComStringWrite( "\r\n" );
 }
